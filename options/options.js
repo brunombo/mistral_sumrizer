@@ -1,7 +1,7 @@
 // --- options/options.js ---
 const browserAPI = globalThis.browser || globalThis.chrome;
 
-const DEFAULT_PROMPT = "Summarize the following text in approximately {count} words in {lang}. Use Markdown (bold, lists). Text: {text} ";
+const DEFAULT_PROMPT = "Summarize the following text in approximately {count} words in {lang}. Use Markdown (bold, lists). Text: {text}";
 
 function saveOptions() {
     const apiKey = document.getElementById('mistralApiKey').value.trim();
@@ -27,7 +27,7 @@ function saveOptions() {
 function restoreOptions() {
     browserAPI.storage.local.get({
         mistralApiKey: '',
-        summaryWordCount: 300,
+        summaryWordCount: 200,
         summaryLanguage: 'Français',
         summaryPrompt: DEFAULT_PROMPT,
         mistralModel: 'mistral-large-latest'

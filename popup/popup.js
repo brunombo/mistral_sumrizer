@@ -1,6 +1,6 @@
 // --- popup/popup.js ---
 const DEFAULT_WORD_COUNT = 200;
-const DEFAULT_LANGUAGE = 'French';
+const DEFAULT_LANGUAGE = 'Français';
 const DEFAULT_PROMPT = "Summarize the following text in approximately {count} words in {lang}. Use Markdown (bold, lists). Text: {text}";
 const MODEL_NAME = "mistral-large-3";
 

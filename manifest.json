@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "Mistral Summarizer",
-  "version": "1.3",
+  "version": "1.4",
   "description": "Résume le contenu des pages web en utilisant l'API Mistral AI.",
   "permissions": [
     "activeTab",

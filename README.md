@@ -2,7 +2,7 @@
 
 Extension de navigateur (Manifest V3) qui résume la page web active avec l'API de Mistral AI. Le résumé s'affiche en Markdown dans le popup et peut être copié en un clic.
 
-Version actuelle : **1.3**
+Version actuelle : **1.4**
 
 ## Fonctionnement
 
@@ -30,8 +30,8 @@ La page d'options s'ouvre automatiquement si aucune clé API n'est définie. Ell
 | Réglage | Valeurs |
 |---|---|
 | Clé API Mistral | à créer sur la [console Mistral AI](https://console.mistral.ai/) |
-| Nombre de mots | 50 à 500 |
-| Langue de sortie | Français, English, Español, Deutsch, Italiano |
+| Nombre de mots | 50 à 500 (200 par défaut) |
+| Langue de sortie | Français (par défaut), English, Español, Deutsch, Italiano |
 | Modèle | `mistral-large-latest`, `mistral-large-3`, `mistral-medium-latest`, `mistral-small-latest`, `open-mistral-nemo` |
 | Prompt personnalisé | variables `{count}` (mots), `{lang}` (langue), `{text}` (contenu de la page) |
 
@@ -66,11 +66,11 @@ Les bibliothèques sont embarquées localement, sans CDN, pour respecter la poli
 
 ## Historique
 
+- **1.4** — Valeurs par défaut harmonisées entre la page d'options et le popup : 200 mots, `Français`.
 - **1.3** — Correctif : certains modèles Mistral renvoient `message.content` sous forme de tableau de chunks (`thinking` + `text`) au lieu d'une chaîne. Seuls les chunks `text` sont désormais extraits. Cela supprime l'erreur `marked(): input parameter is of type [object Array], string expected`.
 - **1.2** — Version précédente.
 
 ## Limites connues
 
 - Seuls les 15 000 premiers caractères de la page sont résumés.
-- Les valeurs par défaut diffèrent entre la page d'options (300 mots, `Français`) et le popup (200 mots, `French`). Elles ne s'appliquent que tant que l'utilisateur n'a rien enregistré dans les options.
 - L'extraction de texte ne fonctionne pas sur les pages internes du navigateur (`about:`, `chrome://`, AMO), où l'injection de script est interdite.
