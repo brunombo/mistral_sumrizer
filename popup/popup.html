@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>mistral Summarizer</title>
+  <script src="purify.min.js"></script>
+  <script src="marked.min.js"></script>
+  <style>
+    body { 
+      width: 420px; 
+      padding: 15px; 
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; 
+      margin: 0;
+      background-color: #f8f9fa;
+      color: #212529;
+    }
+
+    .header { 
+      display: flex; 
+      justify-content: space-between; 
+      align-items: center; 
+      margin-bottom: 10px;
+    }
+
+    h2 { margin: 0; font-size: 1.2rem; color: #007bff; }
+
+    /* Zone de texte redimensionnable et stylisée pour le Markdown */
+    #summary-output { 
+      margin-top: 10px; 
+      padding: 15px; 
+      border: 1px solid #dee2e6; 
+      background-color: #ffffff; 
+      min-height: 150px;
+      max-height: 500px;
+      overflow-y: auto;
+      resize: vertical; 
+      font-size: 14px;
+      line-height: 1.6;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    }
+
+    /* --- Styles Spécifiques pour le Rendu Markdown --- */
+    #summary-output p { margin: 0 0 12px 0; }
+    #summary-output strong { color: #000; font-weight: 600; }
+    
+    /* Forcer l'affichage des listes à puces */
+    #summary-output ul, #summary-output ol { 
+      padding-left: 25px; 
+      margin: 0 0 12px 0; 
+      display: block !important;
+    }
+    #summary-output li { 
+      margin-bottom: 6px; 
+      display: list-item !important;
+      list-style-type: disc !important;
+    }
+    #summary-output ol li { list-style-type: decimal !important; }
+
+    #summary-output h1, #summary-output h2, #summary-output h3 { 
+      font-size: 1.1rem; 
+      margin: 15px 0 8px 0; 
+      color: #333;
+      border-bottom: 1px solid #eee;
+    }
+    
+    #summary-output code { 
+      background: #f1f3f5; 
+      padding: 2px 4px; 
+      border-radius: 3px; 
+      font-family: monospace; 
+    }
+
+    /* --- Interface --- */
+    .actions { display: flex; gap: 10px; margin-top: 15px; }
+    
+    button { 
+      flex: 1; 
+      padding: 10px; 
+      border-radius: 6px; 
+      border: none; 
+      cursor: pointer; 
+      font-weight: 600;
+      font-size: 13px;
+      transition: all 0.2s ease;
+    }
+
+    #summarize-btn { 
+      background-color: #007bff; 
+      color: white; 
+    }
+    #summarize-btn:hover { background-color: #0056b3; }
+
+    #copy-btn { 
+      background-color: #6c757d; 
+      color: white; 
+      display: none; /* Apparaît après génération */
+    }
+    #copy-btn:hover { background-color: #5a6268; }
+
+    #status { 
+      color: #6c757d; 
+      font-size: 0.85em; 
+      margin-top: 10px; 
+      text-align: center;
+      font-style: italic;
+    }
+
+    /* Lien vers les options en cas d'erreur */
+    #options-link { color: #007bff; text-decoration: none; font-weight: bold; }
+    #options-link:hover { text-decoration: underline; }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <h2>mistral Web Summarizer</h2>
+  </div>
+
+  <div id="summary-output">Click the button to generate a summary of this page...</div>
+  
+  <div id="status">Ready</div>
+
+  <div class="actions">
+    <button id="summarize-btn">Summarize Page</button>
+    <button id="copy-btn">Copy to Clipboard</button>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>
